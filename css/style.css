@@ -1,9 +1,28 @@
+@font-face {
+  font-family: 'ALGERIA';
+  src: url('../font/ALGERIA.ttf') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'baskerville-old-face';
+  src: url('../font/baskerville-old-face.ttf') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  height: 100%;
+  margin: 0;
+}
+
 body {
   background-color: #ffffff;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'baskerville-old-face';
   margin: 0;
   padding: 0;
-  line-height: 1.6;
+  line-height: 1.2;
 }
 .container {
   width: 100%;
@@ -14,11 +33,30 @@ body {
 }
 
 .hero {
-  background: url('../images/1.webp') center/cover no-repeat;
-  color: #fff;
+  color: #ffffff;
   text-align: center;
-  padding: 80px 20px;
   position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: -1;
+}
+
+.overlay-content {
+  position: relative;
+  color: white;
+  text-align: center;
+  top: 6%;
+  transform: translateY(-50%);
 }
 
 .hero::before {
@@ -26,7 +64,7 @@ body {
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.699); /* Adjust the darkness here */
+  background: rgba(0, 0, 0, 0.615); /* Adjust the darkness here */
   z-index: 1;
 }
 
@@ -39,8 +77,18 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 10px 20px;
-  /* background: rgba(0,0,0,0.5); */
   align-items: center;
+}
+
+.navbar .logo {
+  height: 51px;             /* Controls logo size */
+  display: flex;
+  align-items: center;
+}
+
+.navbar .logo img {
+  max-height: 100%;         /* Keeps logo within defined height */
+  width: 96px;              /* Maintains aspect ratio */
 }
 
 .nav-links {
@@ -51,15 +99,53 @@ body {
 
 .nav-links li a {
   color: #fff;
+  font-size: 1.2em;
   text-decoration: none;
+}
+
+.nav-links a {
+  position: relative;
+  text-decoration: none;
+  color: white;
+  padding-bottom: 5px;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: white;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+.navbar .icons {  
+  display: flex;
+  gap: 1rem; /* Adjust spacing between items */
 }
 
 .navbar .icons a {
   text-decoration: none;
 }
 
+.hero-content {
+  height: 100vh;
+}
+
 .hero-content h1 {
-  font-size: 2.5em;
+  font-family: 'ALGERIA', Courier, monospace;
+  font-size: 5.5em !important;
+}
+
+.hero-content p {
+  font-size: 3.5em !important;
 }
 
 .shop-button {
@@ -81,16 +167,128 @@ body {
 }
 
 .categories,
-.products,
-.testimonials {
+.products {
   padding: 40px 20px;
   text-align: center;
 }
 
 .categories h2,
-.products h2,
-.testimonials h2 {
+.products h2 {
+  font-family: serif;
+  color: #b10000; /* rich red */
   text-align: left;
+  font-size: 2.5em;
+}
+
+.btn-dresses {
+  position: absolute;
+  font-weight: bold;
+  font-size: 1.5rem;
+  bottom: 2em;
+  left:3em;
+  text-transform: uppercase;
+  padding: 0.50em 2em;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+  color: #b10000;
+  background: #ffffff;
+}
+
+.btn-dresses:hover {
+  background-color: #b10000;
+  color: white;
+}
+
+.btn-dresses-two {
+  position: absolute;
+  font-weight: bold;
+  font-size: 1.5rem;
+  bottom: 4em;
+  left:3em;
+  text-transform: uppercase;
+  padding: 0.50em 2em;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+  color: #b10000;
+  background: #ffffff;
+}
+
+.btn-dresses-two:hover {
+  background-color: #b10000;
+  color: white;
+}
+
+.testimonials h2 {
+  font-family: serif;
+  font-size: 32px;
+  color: #b10000; /* rich red */
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.testimonials h2 {
+  font-family: serif;
+  font-size: 32px;
+  color: #b10000; /* rich red */
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.review-card {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+  font-family: 'Roboto', sans-serif; /* Or any font you’re using */
+  max-width: 700px;
+  margin: 20px auto;
+  
+}
+
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ddd;
+}
+
+.review-content {
+  flex: 1;
+  text-align: left;
+}
+
+.reviewer-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 0;
+}
+
+.review-title {
+  font-size: 14px;
+  color: #333;
+  margin: 5px 0;
+  line-height: 1.4;
+}
+
+.product-name {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.stars {
+  font-size: 16px;
+  color: #fdd835; /* Yellow stars */
 }
 
 .category-grid,
@@ -99,23 +297,24 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   gap: 15px;
-  padding: 28px 0;
+  padding: 48px 0;
   margin-top: 20px;
 }
 
-.category-card,
-.product-card {
-  width: 200px;
-  border: 1px solid #eee;
-  border-radius: 8px;
+.category-card {
+  width: 250px;
+  position: relative;
+  border-radius: 12px;
   overflow: hidden;
   transition: transform 0.3s ease;
+  background: #ffffff;
+  margin-bottom: 1.6rem;
 }
 
-.category-card img,
-.product-card img {
+.category-card img {
   width: 100%;
   height: auto;
+  display: block;
 }
 
 .zoom-hover:hover {
@@ -149,6 +348,45 @@ body {
   color: white;
 }
 
+.product-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.product-details {
+  background-color: #b1a300; /* similar to the greenish-yellow used in your image */
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+.product-title {
+  font-size: 14px;
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+.rating {
+  font-size: 14px;
+  color: #ffeb3b; /* yellow star color */
+}
+
+.price {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: #eee;
+  margin-right: 5px;
+}
+
+.discounted-price {
+  font-weight: bold;
+  color: #ffffff;
+}
 
 .testimonial-img {
   border-radius: 50%;
@@ -158,23 +396,58 @@ body {
   margin-bottom: 10px;
 }
 
-footer {
-  background: #f1f1f1;
-  padding: 20px;
+.floral-footer {
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  color: #2d2d2d;
   text-align: left;
-  font-size: 0.9em;
+  padding-bottom: 2rem;
 }
+
+.footer-overlay {
+  background: url('../images/footer.jpg') no-repeat center bottom;
+  background-size: cover;
+  width: 100%;
+  padding: 2rem 1rem;
+}
+
+.footer-content {
+  max-width: 81vw;
+  margin: 0 auto;
+  color: #000000;
+  background-color: #ffffff47;
+  padding: 1.5rem;
+  border-radius: 6px;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+
+.footer-bottom a {
+  text-decoration: none;
+  color: #333;
+  margin: 0 0.4rem;
+}
+
+.footer-bottom a:hover {
+  text-decoration: underline;
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
     gap: 10px;
+    padding-top: 66px;
   }
 
   @media (max-width: 768px) {
     .container {
-      padding: 0 12px;
+      padding: 0 24px;
     }
   }
   
@@ -190,12 +463,19 @@ footer {
     align-items: center;
   }
 
-  .category-card,
-  .product-card {
+  .category-card {
     width: 90%;
   }
 
   .hero-content h1 {
-    font-size: 1.8em;
+    font-size: 2.8em !important;
+  }
+  .hero-content p {
+    font-size: 1.8em !important;
+  }
+  .nav-links li a {
+    color: #fff;
+    font-size: 1em;
+    text-decoration: none;
   }
 }
